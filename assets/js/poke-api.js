@@ -16,8 +16,8 @@ function convertPokeApiDetailToPokemon(pokeDetail) {
 
     pokemon.photo = pokeDetail.sprites.other.dream_world.front_default
 
-    // getLocal(pokeDetail.location_area_encounters).map((value) => { pokemon.location.push(value.location_area.name)})
-
+    //getLocal(pokeDetail.location_area_encounters).map((value) => { pokemon.location.push(value.location_area.name)})
+    console.log(pokemon)
     return pokemon
 }
 

@@ -1,9 +1,15 @@
 const pokemonList = document.getElementById('pokemonList')
 const loadMoreButton = document.getElementById('loadMoreButton')
+const detailPorId = document.getElementById('detailPorId')
 
 const maxRecords = 151
 const limit = 10
 let offset = 0;
+
+var url_string = window.location.href;
+    var url = new URL(url_string);
+    var id = url.searchParams.get("id");
+    console.log(id)
 
 function convertPokemonToLi(pokemon) {
     return `
@@ -19,7 +25,7 @@ function convertPokemonToLi(pokemon) {
                 <img src="${pokemon.photo}"
                      alt="${pokemon.name}">
             </div>
-            <a href="detail.html?id=${pokemon.number}" class="expanse">Detalhes</a>
+            <a id="detailPorId" href="detail.html?id=${pokemon.number}" class="expanse">Detalhes</a>
         </li>
     `
 }
