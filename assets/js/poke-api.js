@@ -1,6 +1,6 @@
 const pokeApi = {}
 
-function convertPokeApiDetailToPokemon(pokeDetail) {
+async function convertPokeApiDetailToPokemon(pokeDetail) {
     const pokemon = new Pokemon();
     pokemon.number = pokeDetail.id
     pokemon.name = pokeDetail.name
@@ -16,8 +16,8 @@ function convertPokeApiDetailToPokemon(pokeDetail) {
 
     pokemon.photo = pokeDetail.sprites.other.dream_world.front_default
 
-    //getLocal(pokeDetail.location_area_encounters).map((value) => { pokemon.location.push(value.location_area.name)})
-    console.log(pokemon)
+    await getLocal(pokeDetail.location_area_encounters)
+    .then((response) => response.map((value) => { pokemon.location.push(value.location_area.name)}))
     return pokemon
 }
 
@@ -42,3 +42,5 @@ pokeApi.getPokemons = (offset = 0, limit = 5) => {
         .then((detailRequests) => Promise.all(detailRequests))
         .then((pokemonsDetails) => pokemonsDetails)
 }
+
+
